@@ -1,0 +1,673 @@
+<!-- ==========================================
+     CHEMICALS IN DAILY LIFE - REPORT SECTION
+     Add after the Introduction section
+=========================================== -->
+
+<style>
+/* Report Section Theme */
+
+#report-section {
+    --report-bg: #07111f;
+    --report-card: #101e30;
+    --report-accent: #36e0c1;
+    --report-text: #edf6ff;
+    --report-muted: #a7b7ca;
+
+    background: var(--report-bg);
+    color: var(--report-text);
+    padding: 70px 6%;
+    font-family: Arial, sans-serif;
+}
+
+#report-section * {
+    box-sizing: border-box;
+}
+
+#report-section .report-heading {
+    text-align: center;
+    max-width: 800px;
+    margin: 0 auto 45px;
+}
+
+#report-section .report-label {
+    display: inline-block;
+    color: var(--report-accent);
+    background: rgba(54, 224, 193, 0.10);
+    border: 1px solid rgba(54, 224, 193, 0.3);
+    padding: 8px 16px;
+    border-radius: 30px;
+    margin-bottom: 18px;
+    font-size: 13px;
+}
+
+#report-section .report-heading h2 {
+    font-size: clamp(30px, 5vw, 44px);
+    margin: 0 0 18px;
+}
+
+#report-section .report-heading h2 span {
+    color: var(--report-accent);
+}
+
+#report-section .report-heading p {
+    color: var(--report-muted);
+    line-height: 1.8;
+    font-size: 16px;
+}
+
+#report-section .report-introduction {
+    background: linear-gradient(
+        135deg,
+        rgba(54, 224, 193, 0.10),
+        rgba(101, 167, 255, 0.06)
+    );
+
+    border: 1px solid rgba(54, 224, 193, 0.25);
+    padding: 30px;
+    border-radius: 18px;
+    margin-bottom: 45px;
+    line-height: 1.9;
+}
+
+#report-section .report-introduction h3 {
+    color: var(--report-accent);
+    font-size: 24px;
+    margin-bottom: 15px;
+}
+
+#report-section .report-search {
+    width: 100%;
+    padding: 15px 18px;
+    border-radius: 10px;
+    border: 1px solid rgba(255,255,255,0.12);
+    background: var(--report-card);
+    color: white;
+    margin-bottom: 30px;
+    outline: none;
+}
+
+#report-section .report-search:focus {
+    border-color: var(--report-accent);
+}
+
+#report-section .report-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 22px;
+}
+
+#report-section .report-card {
+    background: var(--report-card);
+    border: 1px solid rgba(255,255,255,0.09);
+    border-radius: 16px;
+    padding: 25px;
+    display: flex;
+    flex-direction: column;
+    transition: 0.3s;
+    min-width: 0;
+}
+
+#report-section .report-card:hover {
+    transform: translateY(-6px);
+    border-color: var(--report-accent);
+    box-shadow: 0 12px 35px rgba(0,0,0,0.2);
+}
+
+#report-section .report-icon {
+    font-size: 35px;
+    margin-bottom: 18px;
+}
+
+#report-section .report-card h3 {
+    color: var(--report-accent);
+    font-size: 21px;
+    margin: 0 0 15px;
+}
+
+#report-section .report-card p {
+    color: var(--report-muted);
+    font-size: 14px;
+    line-height: 1.8;
+    margin: 0 0 15px;
+}
+
+#report-section .report-card h4 {
+    font-size: 15px;
+    margin: 10px 0;
+}
+
+#report-section .report-card ul {
+    padding-left: 20px;
+    margin: 0 0 20px;
+    color: var(--report-muted);
+    font-size: 14px;
+    line-height: 1.9;
+}
+
+#report-section .report-card li {
+    margin-bottom: 5px;
+}
+
+#report-section .report-tag {
+    display: inline-block;
+    background: rgba(54, 224, 193, 0.09);
+    color: var(--report-accent);
+    padding: 5px 10px;
+    border-radius: 5px;
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.6px;
+    width: fit-content;
+    margin-bottom: 12px;
+}
+
+#report-section .report-footer {
+    margin-top: auto;
+    padding-top: 15px;
+    border-top: 1px solid rgba(255,255,255,0.08);
+    color: var(--report-muted);
+    font-size: 12px;
+}
+
+#report-section .report-download {
+    display: inline-block;
+    margin-top: 35px;
+    padding: 14px 24px;
+    border-radius: 9px;
+    background: var(--report-accent);
+    color: #061a18;
+    font-weight: bold;
+    text-decoration: none;
+    transition: 0.3s;
+}
+
+#report-section .report-download:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(54,224,193,0.2);
+}
+
+#report-section .report-download-area {
+    text-align: center;
+    margin-top: 50px;
+    padding: 35px 20px;
+    border-radius: 18px;
+    border: 1px solid rgba(54,224,193,0.25);
+    background: rgba(54,224,193,0.05);
+}
+
+#report-section .report-download-area p {
+    color: var(--report-muted);
+    margin-top: 12px;
+}
+
+#report-section .report-card[hidden] {
+    display: none;
+}
+
+#report-section .report-empty {
+    display: none;
+    text-align: center;
+    color: var(--report-muted);
+    padding: 30px;
+}
+
+@media (max-width: 950px) {
+    #report-section .report-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
+
+@media (max-width: 600px) {
+    #report-section {
+        padding: 45px 5%;
+    }
+
+    #report-section .report-grid {
+        grid-template-columns: 1fr;
+    }
+
+    #report-section .report-introduction {
+        padding: 22px;
+    }
+
+    #report-section .report-card {
+        padding: 22px;
+    }
+}
+</style>
+
+
+<!-- REPORT SECTION START -->
+
+<section id="report-section">
+
+    <div class="report-heading">
+
+        <span class="report-label">
+            🧪 COMMUNITY ENGAGEMENT PROJECT
+        </span>
+
+        <h2>
+            Chemicals in <span>Daily Life</span>
+        </h2>
+
+        <p>
+            Explore our project report to understand the role of
+            chemicals in nature, food, medicine, household products,
+            personal care, agriculture, and environmental sustainability.
+        </p>
+
+    </div>
+
+
+    <!-- INTRODUCTION -->
+
+    <div class="report-introduction">
+
+        <h3>📖 Introduction</h3>
+
+        <p>
+            Chemicals are the foundation of everything we see, touch,
+            and use in everyday life. The food we eat, the air we breathe,
+            the medicines we take, and the clothes we wear all involve
+            chemical substances.
+        </p>
+
+        <br>
+
+        <p>
+            Chemicals can occur naturally, such as water, oxygen, and
+            minerals, or be manufactured, such as plastics, detergents,
+            and medicines. They help preserve food, fight diseases,
+            maintain hygiene, and support technological development.
+        </p>
+
+        <br>
+
+        <p>
+            However, improper use of chemicals can contribute to health
+            problems, environmental pollution, and damage to ecosystems.
+            Understanding their benefits, risks, and responsible use is
+            essential for safer and more sustainable living.
+        </p>
+
+    </div>
+
+
+    <!-- SEARCH REPORT TOPICS -->
+
+    <input
+        type="search"
+        id="chemicalReportSearch"
+        class="report-search"
+        placeholder="🔍 Search report topics..."
+        aria-label="Search report topics"
+    >
+
+
+    <!-- REPORT TOPIC CARDS -->
+
+    <div class="report-grid" id="chemicalReportGrid">
+
+
+        <!-- 1. CHEMICALS IN NATURE -->
+
+        <article class="report-card"
+            data-search="nature air water soil minerals human body plants animals oxygen nitrogen carbon dioxide">
+
+            <div class="report-icon">🌍</div>
+
+            <span class="report-tag">Chapter 01</span>
+
+            <h3>Chemicals in Nature</h3>
+
+            <p>
+                Nature contains the chemical substances essential
+                for life. Air, water, soil, minerals, plants, animals,
+                and the human body all depend on chemical compounds.
+            </p>
+
+            <h4>Important Topics</h4>
+
+            <ul>
+                <li><strong>Air:</strong> Nitrogen, oxygen, and carbon dioxide.</li>
+                <li><strong>Water:</strong> H₂O and dissolved minerals.</li>
+                <li><strong>Soil:</strong> Nitrogen, phosphorus, and potassium.</li>
+                <li><strong>Human body:</strong> Proteins, carbohydrates, fats, and minerals.</li>
+                <li><strong>Plants and animals:</strong> Chlorophyll, hormones, and essential oils.</li>
+            </ul>
+
+            <div class="report-footer">
+                Natural chemicals support ecosystems and life processes.
+            </div>
+
+        </article>
+
+
+        <!-- 2. CHEMICALS IN FOOD -->
+
+        <article class="report-card"
+            data-search="food nutrients carbohydrates proteins fats vitamins minerals preservatives colours flavours sodium benzoate citric acid">
+
+            <div class="report-icon">🍎</div>
+
+            <span class="report-tag">Chapter 02</span>
+
+            <h3>Chemicals in Food</h3>
+
+            <p>
+                Food contains chemical compounds that supply energy,
+                support growth, and regulate body functions. Food
+                processing may also involve preservatives and flavouring agents.
+            </p>
+
+            <h4>Important Topics</h4>
+
+            <ul>
+                <li>Carbohydrates, proteins, and fats.</li>
+                <li>Vitamins and essential minerals.</li>
+                <li>Preservatives such as sodium benzoate.</li>
+                <li>Citric acid, food colours, and flavour enhancers.</li>
+                <li>Fortified foods and nutritional supplements.</li>
+            </ul>
+
+            <div class="report-footer">
+                Balanced nutrition and appropriate food handling are important.
+            </div>
+
+        </article>
+
+
+        <!-- 3. CHEMICALS IN MEDICINE -->
+
+        <article class="report-card"
+            data-search="medicine painkillers analgesics paracetamol aspirin ibuprofen antibiotics penicillin amoxicillin healthcare">
+
+            <div class="report-icon">💊</div>
+
+            <span class="report-tag">Chapter 03</span>
+
+            <h3>Chemicals in Medicine</h3>
+
+            <p>
+                Medicinal compounds help prevent and treat diseases,
+                reduce pain, manage symptoms, and improve healthcare.
+                Their safe use is essential.
+            </p>
+
+            <h4>Important Topics</h4>
+
+            <ul>
+                <li>Paracetamol for pain and fever.</li>
+                <li>Aspirin and ibuprofen.</li>
+                <li>Antibiotics such as penicillin and amoxicillin.</li>
+                <li>Possible side effects of medicines.</li>
+                <li>Antibiotic resistance caused by inappropriate use.</li>
+            </ul>
+
+            <div class="report-footer">
+                Use medicines according to qualified medical advice.
+            </div>
+
+        </article>
+
+
+        <!-- 4. HOUSEHOLD CHEMICALS -->
+
+        <article class="report-card"
+            data-search="household chemicals soaps detergents bleach disinfectants phenyl toilet cleaners LPG kerosene biogas insecticides baking soda vinegar">
+
+            <div class="report-icon">🏠</div>
+
+            <span class="report-tag">Chapter 04</span>
+
+            <h3>Household Chemicals</h3>
+
+            <p>
+                Household chemicals are used for cleaning, cooking,
+                personal hygiene, disinfection, and pest control.
+                Incorrect handling can create health and safety risks.
+            </p>
+
+            <h4>Important Topics</h4>
+
+            <ul>
+                <li>Soaps and detergents.</li>
+                <li>Bleaching powder and disinfectants.</li>
+                <li>Glass cleaners and toilet cleaners.</li>
+                <li>LPG, kerosene, and biogas.</li>
+                <li>Insect repellents, baking soda, and vinegar.</li>
+            </ul>
+
+            <div class="report-footer">
+                Follow product labels and never mix incompatible cleaners.
+            </div>
+
+        </article>
+
+
+        <!-- 5. COSMETICS AND PERSONAL CARE -->
+
+        <article class="report-card"
+            data-search="cosmetics personal care shampoo hair dye skincare moisturizers sunscreen toothpaste fluoride perfumes deodorants nail polish">
+
+            <div class="report-icon">🧴</div>
+
+            <span class="report-tag">Chapter 05</span>
+
+            <h3>Cosmetics and Personal Care</h3>
+
+            <p>
+                Personal care products use chemical ingredients for
+                cleansing, moisturizing, fragrance, sun protection,
+                and other cosmetic purposes.
+            </p>
+
+            <h4>Important Topics</h4>
+
+            <ul>
+                <li>Shampoos and hair-care products.</li>
+                <li>Skin creams, lotions, and sunscreens.</li>
+                <li>Fluoride and other toothpaste ingredients.</li>
+                <li>Perfumes and deodorants.</li>
+                <li>Nail polish and makeup products.</li>
+            </ul>
+
+            <div class="report-footer">
+                Check ingredients and discontinue products that cause irritation.
+            </div>
+
+        </article>
+
+
+        <!-- 6. CHEMICALS IN AGRICULTURE -->
+
+        <article class="report-card"
+            data-search="agriculture fertilizers urea NPK pesticides insecticides fungicides herbicides glyphosate plant growth regulators soil pollution">
+
+            <div class="report-icon">🌾</div>
+
+            <span class="report-tag">Chapter 06</span>
+
+            <h3>Chemicals in Agriculture</h3>
+
+            <p>
+                Agricultural chemicals help supply nutrients, control
+                pests, manage weeds, and regulate plant growth.
+                Excessive use can harm soil, water, and biodiversity.
+            </p>
+
+            <h4>Important Topics</h4>
+
+            <ul>
+                <li>Organic and inorganic fertilizers.</li>
+                <li>Urea and NPK nutrients.</li>
+                <li>Insecticides, fungicides, and rodenticides.</li>
+                <li>Herbicides and weed management.</li>
+                <li>Plant growth regulators.</li>
+            </ul>
+
+            <div class="report-footer">
+                Responsible application helps reduce environmental risks.
+            </div>
+
+        </article>
+
+
+        <!-- 7. SAFER ALTERNATIVES -->
+
+        <article class="report-card"
+            data-search="safer alternatives organic farming biofertilizers biopesticides neem compost herbal remedies eco friendly biodegradable green cosmetics sustainability">
+
+            <div class="report-icon">🌱</div>
+
+            <span class="report-tag">Chapter 07</span>
+
+            <h3>Safer Alternatives</h3>
+
+            <p>
+                Sustainable alternatives can reduce environmental
+                impacts while supporting agriculture, household
+                hygiene, personal care, and responsible consumption.
+            </p>
+
+            <h4>Important Topics</h4>
+
+            <ul>
+                <li>Compost, manure, and biofertilizers.</li>
+                <li>Biopesticides and integrated pest management.</li>
+                <li>Herbal products and responsible healthcare.</li>
+                <li>Biodegradable household cleaning products.</li>
+                <li>Green cosmetics and eco-friendly packaging.</li>
+            </ul>
+
+            <div class="report-footer">
+                Evaluate safety and effectiveness before choosing alternatives.
+            </div>
+
+        </article>
+
+
+        <!-- 8. CONCLUSION -->
+
+        <article class="report-card"
+            data-search="conclusion summary benefits risks chemical awareness responsible use health hygiene food security agriculture pollution sustainability">
+
+            <div class="report-icon">📚</div>
+
+            <span class="report-tag">Chapter 08</span>
+
+            <h3>Conclusion</h3>
+
+            <p>
+                Chemicals are an inseparable part of modern life.
+                They support health, hygiene, food production,
+                agriculture, industry, and technological development.
+            </p>
+
+            <h4>Key Takeaways</h4>
+
+            <ul>
+                <li>Chemicals provide important everyday benefits.</li>
+                <li>Improper handling can cause health and environmental harm.</li>
+                <li>Responsible use improves safety.</li>
+                <li>Sustainable alternatives can reduce certain environmental impacts.</li>
+                <li>Chemical awareness supports informed decisions.</li>
+            </ul>
+
+            <div class="report-footer">
+                Awareness, safe handling, and sustainability are essential.
+            </div>
+
+        </article>
+
+
+    </div>
+
+
+    <p class="report-empty" id="chemicalReportEmpty">
+        No matching topics found. Try another search term.
+    </p>
+
+
+    <!-- DOWNLOAD ORIGINAL PROJECT REPORT -->
+
+    <div class="report-download-area">
+
+        <h3>📄 Read the Complete Project Report</h3>
+
+        <p>
+            Download or view the original Community Engagement
+            Project Report for detailed information about all chapters.
+        </p>
+
+        <!-- Update this path to your actual PDF location -->
+
+        <a
+            class="report-download"
+            href="/reports/CEP-Project-2026-27.pdf"
+            target="_blank"
+            rel="noopener"
+        >
+            📥 View / Download Full Report
+        </a>
+
+    </div>
+
+</section>
+
+
+<!-- REPORT SEARCH SCRIPT -->
+
+<script>
+(function () {
+
+    const searchInput =
+        document.getElementById("chemicalReportSearch");
+
+    const reportGrid =
+        document.getElementById("chemicalReportGrid");
+
+    const reportCards =
+        reportGrid.querySelectorAll(".report-card");
+
+    const emptyMessage =
+        document.getElementById("chemicalReportEmpty");
+
+    searchInput.addEventListener("input", function () {
+
+        const searchText = searchInput.value
+            .trim()
+            .toLowerCase();
+
+        let visibleCount = 0;
+
+        reportCards.forEach(function (card) {
+
+            const searchableText = (
+                card.innerText + " " +
+                (card.dataset.search || "")
+            ).toLowerCase();
+
+            const matches =
+                searchableText.includes(searchText);
+
+            card.hidden = !matches;
+
+            if (matches) {
+                visibleCount++;
+            }
+
+        });
+
+        emptyMessage.style.display =
+            visibleCount === 0 ? "block" : "none";
+
+    });
+
+})();
+</script>
+
+<!-- ==========================================
+     CHEMICALS IN DAILY LIFE REPORT END
+=========================================== -->
